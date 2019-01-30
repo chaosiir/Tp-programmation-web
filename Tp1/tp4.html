@@ -1,0 +1,38 @@
+<html>
+	<head>
+		<div id="carre1" style="position: absolute; left: 10;top:60;width: 50;height: 50; background: red"></div>
+		<div id="carre2" style="position: absolute; left: 10;top:160;width: 50;height: 50; background: red"></div>
+		<div id="carre3" style="position: absolute; left: 10;top:260;width: 50;height: 50; background: red"></div>
+		<script type="text/javascript">
+			var intervalID = setInterval(deplacer,100,1);
+			var pos1=10;
+			var pos2=10;
+			var pos3=10;
+
+			setTimeout(function() {setInterval(deplacer,100,2)}, 1000);
+			setTimeout(function() {setInterval(deplacer,100,3)}, 4000);
+			function deplacer(num) {
+				switch(num) {
+ 					case 1: 
+ 					pos1+=10;
+					document.getElementById('carre1').style.left=pos1+"px";
+    				break;
+  					case 2:
+  					pos2+=10;
+					document.getElementById('carre2').style.left=pos2+"px";
+    				break;
+    				case 3:
+  					pos3+=10;
+					document.getElementById('carre3').style.left=pos3+"px";
+    				break;
+    			}
+				
+			}
+		
+		</script>
+		
+		
+	</head>
+	<body  > 
+	</body>
+</html>

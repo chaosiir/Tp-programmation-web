@@ -1,0 +1,20 @@
+<html>
+	<head>
+		<div id="carre1" style="position: absolute; left: 10;top:60;width: 50;height: 50; background: red"></div>
+		<script type="text/javascript">
+			var pos1=10;
+
+			setTimeout(function() {setInterval(deplacer,100)}, 2000);
+			function deplacer() {
+ 					pos1+=10;
+					document.getElementById('carre1').style.left=pos1+"px";
+				
+			}
+		
+		</script>
+		
+		
+	</head>
+	<body  > 
+	</body>
+</html>

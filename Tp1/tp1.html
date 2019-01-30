@@ -1,0 +1,30 @@
+<html>
+	<head>
+		<button id="button1" onclick="lancer()"> decompte </button>
+		<script type="text/javascript">
+			var nbs=10;
+			var intervalID = null;
+			function decrementer() {
+				if(nbs==0){
+					window.clearInterval(intervalID)
+				}
+				else{
+				nbs--;
+				document.getElementById('button1').innerHTML=nbs;
+				}
+				
+			}
+			function lancer() {
+				if(document.getElementById('button1').innerHTML!=0){
+				intervalID=setInterval(decrementer,1000);
+				window.setInterval(intervalID);
+				document.getElementById('button1').innerHTML=nbs;
+			}
+			}
+		</script>
+		
+	</head>
+	<body  > 
+		
+	</body>
+</html>
