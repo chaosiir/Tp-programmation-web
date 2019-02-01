@@ -1,0 +1,33 @@
+<html>
+	<head>
+
+		<style type="text/css">
+			
+		</style>
+		<div id="animatedElem" style="height:50; width:50; left: 400; background: red; position: absolute;  "></div> 
+					<script type="text/javascript">
+			window.requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame ||
+                              window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;
+			var elem = document.getElementById("animatedElem"); 
+			// Move the element 10px on the right every 16ms
+			function animation(timestamp) {
+				console.log(timestamp)
+				var deplacement=timestamp/1.6;
+				elem.style.left = (400 -deplacement ) + "px";
+				// clear the timer at 400px to stop the animation
+				if ( elem.offsetLeft > 0 ) {
+					requestAnimationFrame(animation);
+				}
+				else{
+					elem.style.left=0;//pour une bonne position finale
+				}
+			};
+			
+			requestAnimationFrame(animation)
+		</script>
+		
+		
+	</head>
+	<body  > 
+	</body>
+</html>

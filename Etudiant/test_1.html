@@ -1,0 +1,33 @@
+<html>
+	<head>
+		<style type="text/css">
+			
+		</style>
+		<div id="animatedElem" style="height:50; width:50; left: 400; background: red; position: absolute;  "></div>
+		<script type="text/javascript">
+			var elem = document.getElementById("animatedElem");
+			var left = 400;
+			var timer;
+			function pausecomp(millis){
+				var date = new Date();
+				var curDate = null;
+				do { 
+					curDate = new Date(); 
+				} while(curDate-date < millis);
+			} 
+			// Move the element 10px on the right every 16ms
+			timer = setInterval(function() {
+				pausecomp(1000);
+				elem.style.left = ( left -= 10 ) + "px";
+				// clear the timer at 400px to stop the animation
+				if ( left < 0 ) {
+					clearInterval( timer );
+					}
+				}, 16);
+		</script>
+		
+		
+	</head>
+	<body  > 
+	</body>
+</html>

@@ -1,0 +1,38 @@
+<html>
+	<head>
+		<style type="text/css">
+			
+		</style>
+		<div id="animatedElem" style="height:50; width:50; left: 400; background: red; position: absolute;  "></div>  
+			<script type="text/javascript">
+			var elem = document.getElementById("animatedElem");
+			var left = 400;
+			var timer;
+			var datean=new Date();
+			function pausecomp(millis){
+				var date = new Date();
+				var curDate = null;
+				do { 
+					curDate = new Date(); 
+				} while(curDate-date < millis);
+			} 
+			// Move the element 10px on the right every 16ms
+			timer = setInterval(function() {
+				pausecomp(100);
+				daten=new Date();
+				var deplacement=(daten-datean)/1.6;
+				datean=daten;
+				elem.style.left = ( left -= deplacement ) + "px";
+				// clear the timer at 400px to stop the animation
+				if ( left < 0 ) {
+					elem.style.left=0;
+					clearInterval( timer );
+					}
+				}, 16);
+		</script>
+		
+		
+	</head>
+	<body  > 
+	</body>
+</html>
