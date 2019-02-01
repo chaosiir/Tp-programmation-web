@@ -1,16 +1,32 @@
 <html>
 	<head>
-	
+		<style type="text/css">
+			
+		</style>
+		<div id="contenaire" style="height:window.innerHeight; width:window.innerWidth;  "></div>
 		<script type="text/javascript">
-			for (var i = 0; i < 10; i++) {
+
+			for (var i = 0; i < 50; i++) {
 				creer_carre(i);
 			}
-			function creer_carre(num) {//creer les carre avec timeout associé
-				
+			function creer_carre(num) {
+				var div=document.createElement('div');
+				div.style.position="absolute"
+				div.style.left = '10px';
+				div.style.top = 15*num+'px';
+				div.id = 'carre'+num;
+				div.style.width='10px';
+				div.style.height='10px';
+				div.style.background='red';
+				document.getElementById("contenaire").appendChild(div);
+				setTimeout(function() {setInterval(deplacer,30,num)}, num*200+4000);	
 			}
-			setTimeout(function() {setInterval(deplacer,100,3)}, 4000);
-			function deplacer(num) {
 			
+			function deplacer(num) {
+				var car=document.getElementById('carre'+num);
+				if (car.offsetLeft<window.innerWidth-50){
+					car.style.left=(car.offsetLeft+10)+"px";
+				}
 				
 			}
 		
