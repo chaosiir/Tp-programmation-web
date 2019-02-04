@@ -3,27 +3,47 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>Events </title>
+     <SCRIPT LANGUAGE="Javascript" src="sprite.js"></SCRIPT>
     </head>
+
     <body>
+      <canvas id="myCanvas" width="1000" height="1000"/>
     </body>
+   
 <script>
-window.addEventListener("keydown", function (event) {
+        var mainloop = function() {
+        updateGame();
+        drawGame();
+      };
+  var animFrame = window.requestAnimationFrame;
+  var can=document.getElementById("myCanvas");
+  var image=new Image();
+  image.src='hero.png';
+  var player=new Sprite(image,200,200,512,512,can,4,16,10);
+  can.addEventListener("keydown", function (event) {
   if (event.defaultPrevented) {
     return; // Should do nothing if the key event was already consumed.
   }
 
   switch (event.key) {
     case "ArrowDown":
+    player.bas();
       // Do something for "down arrow" key press.
-          alert("ArrowDown");
-      break;
+      console.log("bas")
+            break;
     case "ArrowUp":
+    player.haut();
+    console.log("haut")
       // Do something for "up arrow" key press.
       break;
     case "ArrowLeft":
+    player.gauche();
+    console.log("gauche")
       // Do something for "left arrow" key press.
       break;
     case "ArrowRight":
+    player.droit();
+    console.log("droit")
       // Do something for "right arrow" key press.
       break;
     case "Enter":
@@ -39,4 +59,18 @@ window.addEventListener("keydown", function (event) {
   // Consume the event for suppressing "double action".
   event.preventDefault();
 }, true);
+   function updateGame(){
+        player.update();
+     }
+     function drawGame() {
+      can.getContext('2d').clearRect(0,0, 1000, 1000);
+      player.draw()
+     }
+    var recursiveAnim = function() {
+        mainloop();
+        animFrame( recursiveAnim );
+    };
+
+    // start the mainloop
+    animFrame( recursiveAnim );
     </script>
