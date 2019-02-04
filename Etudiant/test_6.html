@@ -1,0 +1,47 @@
+<html>
+	<head>
+
+		<style type="text/css">
+			
+		</style>
+		<canvas id="myCanvas" width="200" height="200"/>
+		<script type="text/javascript">
+				var mainloop = function() {
+        updateGame();
+        drawGame();
+    };
+    var coin=0;
+    var cmp=0;
+    var freq=3;
+    var img1 = new Image(); // Image constructor
+	img1.src = 'images/coin.png';
+	img1.alt = 'alt';
+    var animFrame = window.requestAnimationFrame;
+     function updateGame(){
+        var can=document.getElementById("myCanvas");
+        cmp++;
+        if(cmp%freq===0){
+            coin++;
+            can.getContext('2d').clearRect(0,0, 200, 200);
+        }
+        
+
+     }
+     function drawGame() {
+     	var can=document.getElementById("myCanvas");
+     	can.getContext('2d').drawImage(img1,(coin%10)*100 ,0,100,100,50,50,100,100);
+     }
+    var recursiveAnim = function() {
+        mainloop();
+        animFrame( recursiveAnim );
+    };
+
+    // start the mainloop
+    animFrame( recursiveAnim );
+		</script>
+		
+		
+	</head>
+	<body  > 
+	</body>
+</html>
